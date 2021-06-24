@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   try {
     const allCategories = await Category.findAll({
       include: [{ 
-          model: Product 
+          model: Product,
       }]
     });
     res.status(200).json(allCategories);
@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
   try {
     const singleCategory = await Category.findByPk(req.params.id, {
       include: [{ 
-        model: Product 
+        model: Product,
       }]
     });
     res.status(200).json(singleCategory);
@@ -48,7 +48,7 @@ router.put('/:id', (req, res) => {
   try {
     const updatedData = await Category.update(req.body, { 
       where: { 
-        id: req.params.id 
+        id: req.params.id,
       }
     });
     res.status(200).json(updatedData);
@@ -62,7 +62,7 @@ router.delete('/:id', (req, res) => {
   try {
     const deleteCategory = await Category.destroy({
       where: { 
-        id: req.params.id 
+        id: req.params.id,
       }
     });
       res.status(200).json(deleteCategory);
